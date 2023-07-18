@@ -25,8 +25,12 @@ pipeline {
     }
     stage('Deploy Prod') {
       when {
-        input
+        beforeInput true
         buildingTag()
+      }
+      input {
+        message "Okay to proceed?"
+        submitter "nlscott83"
       }
       steps {
         echo "Deploying tag to production"
