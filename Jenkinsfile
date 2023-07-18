@@ -24,7 +24,10 @@ pipeline {
       }
     }
     stage('Deploy Prod') {
-      input
+      input {
+        message "Okay to proceed?"
+        submitter "nlscott83"
+      }
       when {
         buildingTag()
       }
