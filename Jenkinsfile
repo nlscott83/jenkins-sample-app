@@ -24,12 +24,12 @@ pipeline {
       }
     }
     stage('Deploy Prod') {
+      when {
+        buildingTag()
+      }
       input {
         message "Okay to proceed?"
         submitter "nlscott83"
-      }
-      when {
-        buildingTag()
       }
       steps {
         echo "Deploying tag to production"
