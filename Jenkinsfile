@@ -5,19 +5,30 @@ pipeline {
     disableConcurrentBuilds()
   }
   stages {
-    stage('Hello') {
+    stage('Build') {
       steps {
         echo "Hello"
       }
     }
-    stage('cat README') {
+    stage('Test') {
+      steps {
+        echo "Testing the application"
+      }
+    }
+    stage('Deploy Staging') {
       when {
-        branch "fix-*"
+        buildingTag()
       }
       steps {
-        sh '''
-          cat README.md
-        '''
+        echo "Deploying tag to staging"
+      }
+    }
+    stage('Deploy Prod') {
+      when {
+        buildingTag()
+      }
+      steps {
+        echo "Deploying tag to production"
       }
     }
   }
