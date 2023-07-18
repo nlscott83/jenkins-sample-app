@@ -25,6 +25,7 @@ pipeline {
     }
     stage('Deploy Prod') {
       when {
+        beforeInput true
         buildingTag()
       }
       input {
