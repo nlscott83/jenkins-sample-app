@@ -15,6 +15,11 @@ pipeline {
         echo "Testing the application"
       }
     }
+    stage('Deploy Dev') {
+      steps {
+        echo "Depploying to dev"
+      }
+    }
     stage('Deploy Staging') {
       when {
         buildingTag()
