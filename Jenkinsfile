@@ -24,8 +24,8 @@ pipeline {
       }
     }
     stage('Deploy Prod') {
+      input
       when {
-        input
         buildingTag()
       }
       steps {
